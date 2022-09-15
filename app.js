@@ -14,12 +14,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://locahost:27017/wikiDB2");
+mongoose.connect("mongodb://0.0.0.0:27017/wikiDB2", {useNewUrlParser: true});
 
-const articleSchema = {
+const articleSchema = ({
     title:String,
     content:String
-};
+});
 
 const Article = mongoose.model("Article", articleSchema);
 
@@ -39,10 +39,10 @@ app.get("/articles", function(req, res){
     
     Article.find(function(err, foundArticles){
         res.send(foundArticles);
-    })
+    });
 
     
-})
+});
 //TODO
 
 
