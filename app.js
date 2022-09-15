@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://locahost:27017/wikiDB2");
+mongoose.connect("mongodb://0.0.0.0:27017/wikiDB");
 
 const articleSchema = {
     title:String,
