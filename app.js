@@ -30,30 +30,39 @@ const Article = mongoose.model("Article", articleSchema);
 // });
 // test.save()
 
-app.get("/", function(req, res){
-    res.send("Fab")
+app.route("/articles")
+  .get(function(req, res){
+      Article.find(function(err, foundArticles){
+          res.send(foundArticles);
+      });    
+  })
+
+  .post(function(req, res){
+    const newArticle = new Article({
+      title:req.body.title,
+      content:req.body.content
+    });
+    newArticle.save(function(err){
+    if(!err){
+      res.send("Saved successfully")
+    } else {
+      res.send(err)
+    }
+  })
+
 })
 
-// Fetch all data
-app.get("/articles", function(req, res){
-    
-    Article.find(function(err, foundArticles){
-        res.send(foundArticles);
-    });
+.delete(function(req, res){
+  Article.deleteMany(function(err){
+    if(!err){
+      res.send("All documents deleted")
+      } else {
+        res.send(err)
+      }
+    })
+  })
 
-    
-});
-
-app.post("/articles", function(req, res){
-  const newArticle = new Article({
-    title:req.body.title,
-    content:req.body.content
-});
-newArticle.save()
-
-});
-
-
+;
 //TODO
 
 
