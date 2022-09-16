@@ -34,7 +34,7 @@ app.get("/", function(req, res){
     res.send("Fab")
 })
 
-
+// Fetch all data
 app.get("/articles", function(req, res){
     
     Article.find(function(err, foundArticles){
@@ -43,6 +43,17 @@ app.get("/articles", function(req, res){
 
     
 });
+
+app.post("/articles", function(req, res){
+  const newArticle = new Article({
+    title:req.body.title,
+    content:req.body.content
+});
+newArticle.save()
+
+});
+
+
 //TODO
 
 
