@@ -29,6 +29,8 @@ const Article = mongoose.model("Article", articleSchema);
 // });
 // test.save()
 
+////////////////////////////Targeting all articles ///////////////////////////////////////
+
 app.route("/articles")
   .get(function(req, res){
       Article.find(function(err, foundArticles){
@@ -64,7 +66,7 @@ app.route("/articles")
 ;
 
 
-
+//////////////////////////// Targetting single article ///////////////////////////////////////
 app.route("/articles/:articleTitle")
 .get(function(req, res){
   Article.findOne({title:req.params.articleTitle}, function(err, foundArticle){
@@ -75,7 +77,25 @@ app.route("/articles/:articleTitle")
     }
   })
 
-});
+})
+
+
+.put(function(req, res){
+  Article.updateOne({title:req.params.articleTitle},
+    {title:req.body.title, content:req.body.content},
+    {overwrite: true},
+    function(err){
+      if(!err){
+        res.send("Saved successfully");
+      } else {
+        res.send(err)
+      }
+    }
+
+    );
+})
+;
+
 
 
 // .post()
