@@ -4,5 +4,22 @@
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "mongoose": "^6.6.1"
-  }
+  },
+  "name": "biblequestions-api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ad3rinto/biblequestions-Api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ad3rinto/biblequestions-Api/issues"
+  },
+  "homepage": "https://github.com/ad3rinto/biblequestions-Api#readme",
+  "description": ""
 }

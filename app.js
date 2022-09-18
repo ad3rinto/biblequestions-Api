@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://0.0.0.0:27017/wikiDB");
+mongoose.connect("mongodb+srv://angelayu:angelayu@cluster0.vdlpgxh.mongodb.net/?retryWrites=true&w=majority/wikiDB");
 
 const articleSchema = ({
     title:String,
