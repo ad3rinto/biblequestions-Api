@@ -81,12 +81,12 @@ app.route("/articles/:articleTitle")
 
 
 .put(function(req, res){
-  Article.updateOne({title:req.params.articleTitle},
-    {title:req.body.title, content:req.body.content},
+  Article.findOneAndUpdate({title:req.params.articleTitle},
+    {title: req.body.title, content: req.body.content},
     {overwrite: true},
-    function(err){
+    function(err, docs){
       if(!err){
-        res.send("Saved successfully");
+        res.send("Saved successfully", docs);
       } else {
         res.send(err)
       }
