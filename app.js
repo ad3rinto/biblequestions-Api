@@ -111,9 +111,21 @@ app
         }
       }
     );
-  });
+  })
 
-// .delete()
+  // .delete()
+  .delete(function(req, res) {
+    Article.findOneAndDelete({title: req.params.articleTitle}, function(
+      err,
+      docs
+    ) {
+      if (!err) {
+        res.send("Deleted successfully", docs);
+      } else {
+        res.send(err);
+      }
+    });
+  });
 
 //TODO
 
